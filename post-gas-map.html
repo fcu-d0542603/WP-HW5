@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 750px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+ <script>
+      function initMap() {
+	  var FengChia = {lat: 24.178817, lng: 120.646699};
+        var map = new
+          google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: FengChia,
+          });
+         var marker = new google.maps.Marker({
+          position: FengChia,
+          map: map
+        });
+		var icons = {
+		post: {
+		icon:'post.png'
+		},
+		gas: {
+		icon:'gas.png'
+		},
+
+		};
+		var features = [
+		{
+		position: new google.maps.LatLng(24.179036, 120.601643),
+		type: 'post',
+		address: '407台中市西屯區台灣大道四段1727號'
+		}, {
+		position: new google.maps.LatLng(24.1839566,120.6042878),
+		type: 'post',
+		address: '407台中市西屯區台中港路三段160號'
+		}, {
+		position: new google.maps.LatLng(24.169479, 120.606556),
+		type: 'post',
+		address: '407台中市西屯區工業區六路10號'
+		}, {
+		position: new google.maps.LatLng(24.190482, 120.612215),
+		type: 'post',
+		address: '407台中市西屯區永安里西屯路三段166之80號'
+		}, {
+		position: new google.maps.LatLng(24.183434, 120.618613),
+		type: 'post',
+		address: '407台中市西屯區福順路318號'
+		}, {
+		position: new google.maps.LatLng(24.176692, 120.637649),
+		type: 'post',
+		address: '407台中市西屯區黎明路三段130號'
+		}, {
+		position: new google.maps.LatLng(24.175272, 120.649129),
+		type: 'post',
+		address: '407台中市西屯區河南路2段268號'
+		}, {
+		position: new google.maps.LatLng(24.156536, 120.652863),
+		type: 'post',
+		address: '40759台中市西屯區大隆路60、62號'
+		}, {
+		position: new google.maps.LatLng(24.164622, 120.654203),
+		type: 'post',
+		address: '407台中市西屯區青海路一段83號'
+		}, {
+		position: new google.maps.LatLng(24.1830819,120.6124046),
+		type: 'gas',
+		address: '407台中市西屯區台灣大道四段1047號'
+		}, {
+		position: new google.maps.LatLng(24.192622,120.6209773),
+		type: 'gas',
+		address: '407台中市西屯區福雅路300號'
+		}, {
+		position: new google.maps.LatLng(24.1628253,120.6262056),
+		type: 'gas',
+		address: '407台中市西屯區環中路三段800號'
+		}, {
+		position: new google.maps.LatLng(24.180119,120.6303033),
+		type: 'gas',
+		address: '407台中市西屯區福科路110號'
+		}, {
+		position: new google.maps.LatLng(24.1983873,120.6403902),
+		type: 'gas',
+		address: '407台中市西屯區廣福路191號'
+		}, {
+		position: new google.maps.LatLng(24.171348, 120.643922),
+		type: 'gas',
+		address: '407台中市西屯區青海路二段211號'
+		}, {
+		position: new google.maps.LatLng(24.1721424,120.6432125),
+		type: 'gas',
+		address: '407台中市西屯區河南路二段341號'
+		}, {
+		position: new google.maps.LatLng(24.172108, 120.645452),
+		type: 'gas',
+		address: '407台中市西屯區文心路三段2號'
+		}, {
+		position: new google.maps.LatLng(24.2009436,120.6526457),
+		type: 'gas',
+		address: '407台中市西屯區中清路三段150號'
+		}, {
+		position: new google.maps.LatLng(24.2007819,120.6547873),
+		type: 'gas',
+		address: '407台中市西屯區環中路一段2490號'
+		}, {
+		position: new google.maps.LatLng(24.171489,120.6576353),
+		type: 'gas',
+		address: '407台中市西屯區文心路三段187號'
+		}
+		];
+		// Create markers.
+		features.forEach(function(feature) {
+		var marker = new google.maps.Marker({
+		position: feature.position,
+		icon: icons[feature.type].icon,
+		map: map
+		});
+		
+		var contentString = '<div>' +
+		'<h3>'+feature.address+'</h3>' +
+		'</div>'
+		
+		var infowindow = new google.maps.InfoWindow({
+		content: contentString
+		});
+		
+		marker.addListener('mouseover', function() {
+		infowindow.open(map, marker);
+		});
+		});
+      }
+    </script>
+    <script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjTFEgxZ9n2VokWV96rAHXsB03W_ws444&callback=initMap">
+    </script>
+	
+  </body>
+</html>
